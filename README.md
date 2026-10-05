@@ -14,3 +14,4 @@ the lines 8ec and 8f4 are branch commands used to point the interpreter back to 
 we can see next to the cbnz the opcode of the cbnz function (35), you can refer [this](https://kib.kiev.ua/x86docs/ARM/ARMARMv8/DDI0487A_g_armv8_arm.pdf?utm_source=chatgpt.com) document for aarch64 or one specifit to your cpu.
 the binary only responds if you type 'hellyeah', we want to change that (assume we forgot out password).
 use `hexedit a.out` press `<enter> 8ec<enter>` to jump to 8ec, then move cursor to 5 in 35 and press 4. this should change it to 34 which is `cbz` (check buffer zero). this is the oppisite of what the code did earlier. so it should now jump to sing if not equal. we can easily test this. save and quit and test it out.
+another way to crack this is to inspect the binary with the headers. out string are stored in `.rodata` which is visible if you do `objdump -s -d a.out` or simply `strings a.out`.
